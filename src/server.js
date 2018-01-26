@@ -1,12 +1,24 @@
+import Switch from './Switch'
+
 const express = require('express')
 const app = express()
+const _switch = new Switch(10)
 
 app.get('/', function (req, res) {
-        res.send('Hello World!')
-    }
+  _switch.timesUp()
+  res.send('OK!')
+}
 )
 
-app.listen(4000, function () {
-        console.log('Example app listening on port 4000!')
-    }
+app.listen(4322, function () {
+  console.log('Example app listening on port 4322!')
+  _switch.switching(2, [
+    {in: 1, out: 2},
+    {in: 5, out: 2},
+    {in: 1, out: 2},
+    {in: 1, out: 3},
+    {in: 1, out: 3},
+    {in: 1, out: 3},
+  ])
+}
 )
