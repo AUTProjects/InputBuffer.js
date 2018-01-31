@@ -1,24 +1,16 @@
 import Switch from './Switch'
 
-const express = require('express')
-const app = express()
+const jayson = require('jayson')
+
 const _switch = new Switch(10)
 
-app.get('/', function (req, res) {
-  _switch.timesUp()
-  res.send('OK!')
-}
-)
+// create a server
+var server = jayson.server({
+  'Algorithm.Iterate': function (args, callback) {
+    console.log(args)
+    callback(null, args[0] + args[1])
+    _switch.timesUp()
+  }
+})
 
-app.listen(4322, function () {
-  console.log('Example app listening on port 4322!')
-  _switch.switching(2, [
-    {in: 1, out: 2},
-    {in: 5, out: 2},
-    {in: 1, out: 2},
-    {in: 1, out: 3},
-    {in: 1, out: 3},
-    {in: 1, out: 3},
-  ])
-}
-)
+server.http().listen(3000)
