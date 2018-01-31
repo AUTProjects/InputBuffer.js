@@ -11,7 +11,7 @@ export default class Port {
 
   timesUp () {
     this.timeSlot++
-    console.log(`${this.type === 1 ? 'Inout ' : 'Output '} Port Number: ${this.id}, time slot: ${this.timeSlot}'`)
+    console.log(`${this.type === 1 ? 'Input ' : 'Output '} Port Number: ${this.id}, time slot: ${this.timeSlot}'`)
   }
 
   connect (pair) {
