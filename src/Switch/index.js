@@ -55,6 +55,7 @@ export default class Switch {
 
   onAccept (input, output) {
     this.accepts[input] = output
+    this.outputs[output].accepted = true
   }
 
   timesUp () {
