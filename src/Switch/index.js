@@ -7,6 +7,7 @@ export default class Switch {
     this.outputs = []
     this.grants = []
     this.accepts = []
+    this.match = {}
     for (let n = 0; n < N; n++) {
       this.inputs.push(new InputPort(n, this, N))
       this.outputs.push(new OutputPort(n, this, N))
@@ -14,6 +15,8 @@ export default class Switch {
   }
 
   switching (iteration, packets) {
+    this.match = {}
+
     this.onPacketArrived(packets)
     while (iteration - 1 > 0) {
       this.itrate()
@@ -31,6 +34,7 @@ export default class Switch {
       console.log(`Input ${key} accepts ${accept}`)
       this.inputs[key].connect(accept)
       this.outputs[accept].connect(key)
+      this.match[key] = accept
     })
     this.accepts = []
   }
