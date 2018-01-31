@@ -3,6 +3,7 @@ import Port from './port'
 export default class OutputPort extends Port {
   constructor (id, Switch, N = 10) {
     super(id, Switch, 2, N)
+    this.connected = false
   }
 
   onReport (inputId) {
