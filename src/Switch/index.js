@@ -17,6 +17,7 @@ export default class Switch {
     this.onPacketArrived(packets)
     while (iteration - 1 > 0) {
       this.itrate()
+      iteration--
     }
   }
 
