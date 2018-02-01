@@ -20,7 +20,7 @@
     "nodemon": "^1.14.11"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": " nodemon src/test.js --exec babel-node --presets es2015,stage-2",
     "start": "eslint --fix src && nodemon src/server.js --exec babel-node --presets es2015,stage-2"
   },
   "repository": {

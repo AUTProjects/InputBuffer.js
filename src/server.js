@@ -3,7 +3,7 @@ import Switch from './Switch'
 const jayson = require('jayson')
 
 // create a server
-var server = jayson.server({
+const server = jayson.server({
   'Algorithm.Iterate': function (args, callback) {
     console.log(args)
 
@@ -11,15 +11,15 @@ var server = jayson.server({
     const _switch = new Switch(10)
 
     // Go to current timeslot
-    for (var i = 0; i < args.T; i++) {
+    for (let i = 0; i < args.T; i++) {
       _switch.timesUp()
     }
 
     // Adds all packets
-    var packets = []
-    for (var input = 0; input < args.N; input++) {
-      for (var output = 0; output < args.N; output++) {
-        for (var n = 0; n < args.Ports[input][output]; n++) {
+    const packets = []
+    for (let input = 0; input < args.N; input++) {
+      for (let output = 0; output < args.N; output++) {
+        for (let n = 0; n < args.Ports[input][output]; n++) {
           packets.push({
             in: input,
             out: output

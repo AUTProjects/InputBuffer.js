@@ -12,8 +12,6 @@ export default class OutputPort extends Port {
     } else {
       this.counter[inputId] += 1
     }
-
-    this.grant()
   }
 
   grant () {

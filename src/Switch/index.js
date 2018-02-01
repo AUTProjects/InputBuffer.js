@@ -29,6 +29,13 @@ export default class Switch {
     this.accept()
   }
 
+
+  grant () {
+    this.outputs.forEach((output, key) => {
+          output.grant()
+    })
+  }
+
   accept () {
     this.accepts.forEach((accept, key) => {
       console.log(`Input ${key} accepts ${accept}`)
@@ -50,10 +57,12 @@ export default class Switch {
         this.outputs[packet.out].onReport(packet.in)
       }
     })
+    this.grant()
     this.accept()
   }
 
   onGrant (input, output) {
+    console.log(this.outputs[output].id+" grants "+ this.inputs[input].id)
     this.inputs[input].accept(output)
   }
 
