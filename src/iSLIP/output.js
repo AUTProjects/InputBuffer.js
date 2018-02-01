@@ -19,10 +19,9 @@ export default class OutputPort extends Port {
       return
     }
 
-    let j = (this.timeSlot + this.id) % this.N
-    if (!(this.counter[j] > 0)) {
-      j = Object.keys(this.counter).reduce(function (a, b) {
-        if (this.counter[a] > this.counter[b]) {
+      let j = Object.keys(this.counter).reduce(function (a, b) {
+        // console.log(this.id+" "+a+" "+b+" "+this.calculateRR(a)+" "+this.calculateRR(b)+" "+this.N)
+        if (this.calculateRR(a) < this.calculateRR(b)) {
           if (!this.Switch.inputs[a].connected) {
             return a
           } else {
@@ -30,14 +29,13 @@ export default class OutputPort extends Port {
           }
         }else{
           if (!this.Switch.inputs[b].connected) {
-            return b
-          } else {
             return a
+          } else {
+            return b
           }
         }
-      }.bind(this)
-      )
-    }
+      }.bind(this))
+
     if (this.counter[j] !== undefined && this.counter[j] !== 0 &&
       !this.Switch.inputs[j].connected) {
       this.Switch.onGrant(j, this.id)

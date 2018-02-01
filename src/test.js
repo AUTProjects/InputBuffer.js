@@ -20,6 +20,7 @@ app.listen(4322, function () {
       {in: 4, out: 5},
       {in: 5, out: 5},
       {in: 6, out: 8},
+      {in: 6, out: 7},
       {in: 7, out: 2},
       {in: 8, out: 3},
     ] //packets
